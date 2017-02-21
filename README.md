@@ -6,7 +6,6 @@ This sample demonstrates injection of an EJB into a servlet. The application con
 
 This sample can be installed onto runtime versions 8.5.5.0 and later.
 
-Instructions
 
 ## Running in Eclipse with Maven
 
