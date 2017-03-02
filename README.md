@@ -34,15 +34,9 @@ Use the following steps to run the application with Maven:
 In your browser, enter the URL for the application: [http://localhost:9132/ejbservlet/](http://localhost:9132/ejbservlet/) (where port 9132 assumes the httpEndpoint provided in the sample server.xml has not been modified).
 In your browser, you should see the message "Hello EJB World".
 
-## Deploying to Bluemix
-
-Click the button below to deploy your own copy of this application to [Bluemix](https://bluemix.net).
-
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/WASdev/sample.ejb.git)
-
 # Notice
 
-© Copyright IBM Corporation 2017.
+Â© Copyright IBM Corporation 2017.
 
 # License
 
