@@ -17,6 +17,6 @@ package it;
 
 import org.junit.Test;
 
-public class ApplicationIT extends EndpointIT {
+public class ApplicationIT extends EndpointHelper {
 
 }
