@@ -46,7 +46,7 @@
 		<profile>
 			<id>runnable</id>
 			<properties>
-				<package.file>${project.build.directory}/${project.artifactId}.jar</package.file>
+				<packaging.type>runnable</packaging.type>
 			</properties>
 		</profile>
 	</profiles>
