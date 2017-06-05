@@ -15,11 +15,11 @@
  */ 
 package it.servlet;
 
-import it.EndpointTest;
+import it.EndpointHelper;
 
 import org.junit.Test;
 
-public class LibertyServletTest extends EndpointTest {
+public class LibertyServletIT extends EndpointHelper {
 
     @Test
     public void testDeployment() {

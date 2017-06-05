@@ -23,7 +23,7 @@ import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Response;
 
-public class EndpointTest {
+public class EndpointHelper {
 
     public void testEndpoint(String endpoint, String expectedOutput) {
         String port = System.getProperty("liberty.test.port");
