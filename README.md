@@ -1,4 +1,4 @@
-Enterprise Java Beans (EJB) Sample
+Enterprise Java Beans (EJB) Sample [![Build Status](https://travis-ci.org/WASdev/sample.ejb.svg?branch=master)](https://travis-ci.org/WASdev/sample.ejb)
 ==============
 
 
