@@ -33,7 +33,7 @@ liberty {
     server {
         name = "ejbServer"
         configFile = file('src/main/liberty/config/server.xml')
-        apps = [file('build/libs/ejb-ear.ear')]
+        apps = [file(ear.archivePath)]
     }
 }
 

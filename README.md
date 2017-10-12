@@ -66,6 +66,7 @@ Use the following steps to build and run the application with Gradle from the ro
 3. To stop the server, run:
     ```bash
     $ ./gradlew libertyStop
+    ```
 
 In your browser, enter the URL for the application: [http://localhost:9080/ejb-war/ejbservlet/](http://localhost:9080/ejb-war/ejbservlet/) 
 You should see the message "Hello EJB World".
