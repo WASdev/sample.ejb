@@ -1,0 +1,73 @@
+apply plugin: 'ear'
+apply plugin: 'java'
+apply plugin: 'liberty'
+
+description = 'EAR Module'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            name = 'Sonatype Nexus Snapshots'
+            url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.0-SNAPSHOT'
+    }
+}
+
+dependencies {
+    deploy project(':ejb-ejb')
+    deploy project(path:':ejb-war', configuration:'archives')
+    testCompile group: 'commons-httpclient', name: 'commons-httpclient', version:'3.1'
+    testCompile group: 'junit', name: 'junit', version:'4.12'
+    libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-javaee7', version: '17.0.0.2'
+}
+
+ear {
+    archiveName = baseName + '.' + extension
+}
+
+liberty {
+    server {
+        name = "ejbServer"
+        configFile = file('src/main/liberty/config/server.xml')
+        apps = [file('build/libs/ejb-ear.ear')]
+    }
+}
+
+test {
+    println 'inside the unit test block'
+    reports.html.destination = file("$buildDir/reports/unit")
+    reports.junitXml.destination = file("$buildDir/test-results/unit")
+    exclude '**/it/**'
+}
+
+task integrationTest(type: Test) {
+    group 'Verification'
+    description 'Runs the integration tests.'
+    reports.html.destination = file("$buildDir/reports/it")
+    reports.junitXml.destination = file("$buildDir/test-results/it")
+    include '**/it/**'
+    exclude '**/unit/**'
+
+  //  systemProperties = ['liberty.test.port': testServerHttpPort, 'war.context': warContext]
+}
+
+task printMessageAboutRunningServer {
+    doLast {
+        println "The server is now running at https://localhost:9443/ejb-war"
+        println "To stop the server run 'gradle libertyStop'"
+    }
+}
+
+clean.dependsOn 'libertyStop'
+installApps.dependsOn 'ear'
+ear.dependsOn ':ejb-war:war'
+check.dependsOn 'integrationTest'
+integrationTest.dependsOn 'libertyStart', 'testClasses'
+integrationTest.finalizedBy 'libertyStop'
+libertyStart.finalizedBy 'printMessageAboutRunningServer'
+

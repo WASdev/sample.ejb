@@ -1,0 +1,21 @@
+
+apply plugin: 'war'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+jar.enabled = false
+
+description = 'WAR Module'
+dependencies {
+    testCompile group: 'junit', name: 'junit', version:'4.12'
+    providedCompile group: 'javax', name: 'javaee-api', version:'7.0'
+    providedCompile project(':ejb-ejb')
+}
+
+war {
+    archiveName = baseName + '.' + extension
+}
+
