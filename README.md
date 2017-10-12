@@ -31,7 +31,7 @@ Use the following steps to run the application with Maven:
 
 2. To run the server in the `ejb-ear` subproject:
     ```bash
-    $ mvn -pl ejb-jar liberty:run-server
+    $ mvn -pl ejb-ear liberty:run-server
     ```
 
 In your browser, enter the URL for the application: [http://localhost:9080/ejb-war/ejbservlet/](http://localhost:9080/ejb-war/ejbservlet/) 
@@ -39,12 +39,11 @@ In your browser, you should see the message "Hello EJB World".
 
 ## Gradle
 
-The [Liberty Gradle Plug-in[ supports creating loose application configuration for war tasks, but it does not yet support loose enterprise applications. This example installs the EAR file when building using Gradle. After running the full build, you will see the application installed as `sample.ejb/ejb-ear/build/wlp/usr/servers/ejbServer/apps/ejb-ear.ear`.
+This project can also be built with Gradle. The project uses the [Liberty Gradle Plug-in] to automatically download and install the Liberty Java EE 7 Full Platform from [Maven Central]. The Liberty Gradle Plug-in is also used to create, configure, and run the application on the Liberty server. 
 
+The Liberty Gradle Plug-in supports creating loose application configuration for war tasks, but it does not yet support loose enterprise applications. This example installs the EAR file when building using Gradle. After running the full build, you will see the application installed as `sample.ejb/ejb-ear/build/wlp/usr/servers/ejbServer/apps/ejb-ear.ear`.
 
 ### Using the command-line with Gradle 
-
-This project can be built with Gradle. The project uses the [Liberty Gradle Plug-in] to automatically download and install the Liberty Java EE 7 Full Platform from [Maven Central]. The Liberty Gradle Plug-in is also used to create, configure, and run the application on the Liberty server. 
 
 Use the following steps to build and run the application with Gradle from the root project:
 
@@ -68,7 +67,7 @@ Use the following steps to build and run the application with Gradle from the ro
     $ ./gradlew libertyStop
 
 In your browser, enter the URL for the application: [http://localhost:9080/ejb-war/ejbservlet/](http://localhost:9080/ejb-war/ejbservlet/) 
-In your browser, you should see the message "Hello EJB World".
+You should see the message "Hello EJB World".
 
 
 
