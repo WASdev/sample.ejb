@@ -20,7 +20,7 @@ The Liberty Maven plug-in and WebSphere Developer Tools support creating loose a
 
 ### Using the command-line with Maven 
 
-This project can be built with Apache Maven. The project uses the [Liberty Maven Plug-in] to automatically download and install the Liberty Java EE Web Profile 7 runtime from [Maven Central]. The Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
+This project can be built with Apache Maven. The project uses the [Liberty Maven Plug-in] to automatically download and install the Liberty Java EE 7 Full Platform 7 runtime from [Maven Central]. The Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
 
 Use the following steps to run the application with Maven:
 
@@ -31,15 +31,16 @@ Use the following steps to run the application with Maven:
 
 2. To run the server in the `ejb-ear` subproject:
     ```bash
-    $ mvn -pl ejb-ear liberty:run-server
+    $ mvn --projects ejb-ear liberty:run-server
     ```
+    The `--projects` and `-pl` are equivalent options.
 
 In your browser, enter the URL for the application: [http://localhost:9080/ejb-war/ejbservlet/](http://localhost:9080/ejb-war/ejbservlet/) 
 In your browser, you should see the message "Hello EJB World".
 
 ## Gradle
 
-This project can also be built with Gradle. The project uses the [Liberty Gradle Plug-in] to automatically download and install the Liberty Java EE 7 Full Platform from [Maven Central]. The Liberty Gradle Plug-in is also used to create, configure, and run the application on the Liberty server. 
+This project can also be built with Gradle. The project uses the [Liberty Gradle Plug-in] to automatically download and install the Liberty Java EE 7 Full Platform runtime from [Maven Central]. The Liberty Gradle Plug-in is also used to create, configure, and run the application on the Liberty server. 
 
 The Liberty Gradle Plug-in supports creating loose application configuration for war tasks, but it does not yet support loose enterprise applications. This example installs the EAR file when building using Gradle. After running the full build, you will see the application installed as `sample.ejb/ejb-ear/build/wlp/usr/servers/ejbServer/apps/ejb-ear.ear`.
 
@@ -49,7 +50,7 @@ Use the following steps to build and run the application with Gradle from the ro
 
 1. Execute the full Gradle build. The Liberty Gradle Plug-in will download and install the Liberty server in the `ejb-ear` project. It will also run all tests.
     ```bash
-    $ gradle clean build
+    $ ./gradlew clean build
     ```
 
 2. To start the server with the EJB sample application run:
