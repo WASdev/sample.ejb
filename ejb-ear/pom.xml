@@ -14,21 +14,6 @@
     <packaging>ear</packaging>
 
     <name>EAR Module</name>
-
-    <pluginRepositories>
-        <!-- Configure Sonatype OSS Maven snapshots repository -->
-        <pluginRepository>
-            <id>sonatype-nexus-snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </pluginRepository>
-    </pluginRepositories>
     
     <dependencies>
         <dependency>
@@ -73,7 +58,7 @@
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>2.1-SNAPSHOT</version>
+                <version>2.1</version>
                 <configuration>
                     <assemblyArtifact>
                         <groupId>com.ibm.websphere.appserver.runtime</groupId>
@@ -136,7 +121,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>3.7.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -148,7 +133,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>2.20.1</version>
                 <executions>
                     <execution>
                         <goals>
