@@ -72,7 +72,6 @@ In your browser, enter the URL for the application: [http://localhost:9080/ejb-w
 You should see the message "Hello EJB World".
 
 
-
 # Notice
 
 © Copyright IBM Corporation 2017.
