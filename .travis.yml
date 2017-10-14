@@ -3,5 +3,5 @@ jdk:
     - openjdk7
     - oraclejdk8
 script:
-  - mvn install
+#  - mvn install
   - ./gradlew build
