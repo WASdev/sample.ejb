@@ -5,11 +5,6 @@ description = 'EAR Module'
 
 buildscript {
     repositories {
-        mavenLocal()
-        maven {
-            name = 'staging'
-            url = 'https://oss.sonatype.org/content/repositories/netwasdev-1089'
-        }
         mavenCentral()
     }
     dependencies {
