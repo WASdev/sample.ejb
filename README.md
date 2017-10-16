@@ -6,8 +6,11 @@ This sample demonstrates injection of an EJB into a servlet. The application con
 
 This sample can be installed onto runtime versions 8.5.5.0 and later.
 
+## Maven
 
-## Running in Eclipse with Maven
+The Liberty Maven plug-in and WebSphere Developer Tools support creating loose applications. This example creates a loose EAR application when building using Maven. After running the full build, you will see the application installed as `sample.ejb/ejb-ear/target/liberty/wlp/usr/servers/ejbServer/apps/ejb-ear.ear.xml`.
+
+### Using Eclipse with Maven
 
 1. Clone this project and import into Eclipse as an 'Existing Maven Project'.
 2. Right-click the project and select **Run As > Maven Clean**.
@@ -15,24 +18,59 @@ This sample can be installed onto runtime versions 8.5.5.0 and later.
 4. Right-click the project and select Run As -> Run on Server.
 5. You should see the following in the console: `Application EJBSample started in XX.XX seconds.`
 
-## Running with Maven
+### Using the command-line with Maven 
 
-This project can be built with Apache Maven. The project uses Liberty Maven Plug-in to automatically download and install Liberty with Java EE7 Web Profile runtime from Maven Central. Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
+This project can be built with Apache Maven. The project uses the [Liberty Maven Plug-in] to automatically download and install the Liberty Java EE 7 Full Platform 7 runtime from [Maven Central]. The Liberty Maven Plug-in is also used to create, configure, and run the application on the Liberty server. 
 
 Use the following steps to run the application with Maven:
 
-1. Execute full Maven build. This will cause Liberty Maven Plug-in to download and install Liberty profile server.
+1. Execute the full Maven build. The Liberty Maven Plug-in will download and install the Liberty server in the `ejb-ear` project. It will also run all tests.
     ```bash
     $ mvn clean install
     ```
 
-2. To run the server with the Servlet sample execute:
+2. To run the server in the `ejb-ear` subproject:
     ```bash
-    $ mvn liberty:run-server
+    $ mvn --projects ejb-ear liberty:run-server
+    ```
+    The `--projects` and `-pl` are equivalent options.
+
+In your browser, enter the URL for the application: [http://localhost:9080/ejb-war/ejbservlet/](http://localhost:9080/ejb-war/ejbservlet/) 
+In your browser, you should see the message "Hello EJB World".
+
+## Gradle
+
+This project can also be built with Gradle. The project uses the [Liberty Gradle Plug-in] to automatically download and install the Liberty Java EE 7 Full Platform runtime from [Maven Central]. The Liberty Gradle Plug-in is also used to create, configure, and run the application on the Liberty server. 
+
+The Liberty Gradle Plug-in supports creating loose application configuration for war tasks, but it does not yet support loose enterprise applications. This example installs the EAR file when building using Gradle. After running the full build, you will see the application installed as `sample.ejb/ejb-ear/build/wlp/usr/servers/ejbServer/apps/ejb-ear.ear`.
+
+### Using the command-line with Gradle 
+
+Use the following steps to build and run the application with Gradle from the root project:
+
+1. Execute the full Gradle build. The Liberty Gradle Plug-in will download and install the Liberty server in the `ejb-ear` project. It will also run all tests.
+    ```bash
+    $ ./gradlew clean build
     ```
 
-In your browser, enter the URL for the application: [http://localhost:9132/ejbservlet/](http://localhost:9132/ejbservlet/) (where port 9132 assumes the httpEndpoint provided in the sample server.xml has not been modified).
-In your browser, you should see the message "Hello EJB World".
+2. To start the server with the EJB sample application run:
+    ```bash
+    $ ./gradlew libertyStart
+    ```
+
+    Alternatively, execute the run command:
+    ```bash
+    $ ./gradlew libertyRun --no-daemon
+    ```
+
+3. To stop the server, run:
+    ```bash
+    $ ./gradlew libertyStop
+    ```
+
+In your browser, enter the URL for the application: [http://localhost:9080/ejb-war/ejbservlet/](http://localhost:9080/ejb-war/ejbservlet/) 
+You should see the message "Hello EJB World".
+
 
 # Notice
 
@@ -55,3 +93,5 @@ limitations under the License.
 ````
 
 [Liberty Maven Plug-in]: https://github.com/WASdev/ci.maven
+[Liberty Gradle Plug-in]: https://github.com/WASdev/ci.gradle
+[Maven Central]: https://search.maven.org/
