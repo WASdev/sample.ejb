@@ -44,6 +44,13 @@ This project can also be built with Gradle. The project uses the [Liberty Gradle
 
 The Liberty Gradle Plug-in supports creating loose application configuration for war tasks, but it does not yet support loose enterprise applications. This example installs the EAR file when building using Gradle. After running the full build, you will see the application installed as `sample.ejb/ejb-ear/build/wlp/usr/servers/ejbServer/apps/ejb-ear.ear`.
 
+### Using Eclipse with Gradle
+1. Go to *Help > Eclipse Marketplace > Install Buildship Gradle Integration 2.0*
+2. Clone this project and import into Eclipse as an 'Existing Gradle Project'.
+3. Go to *Window > Show View > Other > Gradle Executions & Gradle Tasks*
+4. Go to Gradle Tasks view and run `clean` in build folder, then `build` in build folder, then `libertyStart` in liberty folder.
+5. You should see the following in the console: `Application EJBSample started in XX.XX seconds.`
+
 ### Using the command-line with Gradle 
 
 Use the following steps to build and run the application with Gradle from the root project:
